@@ -1,0 +1,94 @@
+
+//+------------------------------------------------------------------+
+//|                                            Nas100 Scalping EA                                            |
+//|                                    https://forexroboteasy.com                                    |
+//|                                      Developed by Forex Robot Easy Team                        |
+//+------------------------------------------------------------------+
+#property strict
+
+// Risk Management Parameters
+double riskPercentage = 1; // Risk per trade, as a percentage of account balance
+int maxTradesPerDay = 2; // Maximum number of trades per day
+
+// Trading Parameters
+int timeframe = PERIOD_M1; // 1-minute timeframe
+int stopLoss = 50; // Stop loss in pips
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Set risk per trade based on account balance
+    double accountBalance = AccountBalance();
+    double riskPerTrade = accountBalance * riskPercentage / 100;
+
+    // Set trading parameters
+    SetStopLoss(stopLoss);
+    SetMaxTradesPerDay(maxTradesPerDay);
+
+    // Print initialization details
+    Print('Nas100 Scalping EA initialized successfully');
+    Print('Account balance: ', accountBalance);
+    Print('Risk per trade: ', riskPerTrade);
+    Print('Stop loss: ', stopLoss, ' pips');
+    Print('Max trades per day: ', maxTradesPerDay);
+
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Perform any necessary cleanup tasks
+    Print('Nas100 Scalping EA deinitialized successfully');
+}
+
+//+------------------------------------------------------------------+
+//| Expert start function                                            |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if there are any available trading opportunities
+    if (IsTradingOpportunity())
+    {
+        // Open a new trade
+        OpenTrade();
+    }
+}
+
+//+------------------------------------------------------------------+
+//| Check if there are any available trading opportunities           |
+//+------------------------------------------------------------------+
+bool IsTradingOpportunity()
+{
+    // Add your custom logic here to identify high probability trading opportunities
+    // Return true if there is a trading opportunity, false otherwise
+    return false;
+}
+
+//+------------------------------------------------------------------+
+//| Open a new trade                                                 |
+//+------------------------------------------------------------------+
+void OpenTrade()
+{
+    // Add your code here to execute a trade promptly
+}
+
+//+------------------------------------------------------------------+
+//| Set the stop loss for all trades                                 |
+//+------------------------------------------------------------------+
+void SetStopLoss(int stopLoss)
+{
+    // Add code here to set the stop loss for all trades
+}
+
+//+------------------------------------------------------------------+
+//| Set the maximum number of trades per day                          |
+//+------------------------------------------------------------------+
+void SetMaxTradesPerDay(int maxTradesPerDay)
+{
+    // Add code here to set the maximum number of trades per day
+}
